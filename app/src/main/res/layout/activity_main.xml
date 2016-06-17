@@ -25,10 +25,10 @@
         android:layout_height="wrap_content"
         android:background="#1E88E5"
         android:text="start"
-        android:layout_below="@+id/textView"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView"
-        android:layout_marginTop="38dp" />
+        android:layout_marginTop="48dp"
+        android:layout_below="@+id/startText"
+        android:layout_alignLeft="@+id/startText"
+        android:layout_alignStart="@+id/startText" />
 
     <com.gc.materialdesign.views.ButtonRectangle
         android:id="@+id/settingbtn"
