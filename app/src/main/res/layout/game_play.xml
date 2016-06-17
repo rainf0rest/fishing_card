@@ -14,16 +14,26 @@
         android:layout_height="wrap_content"
         android:text="river"
         android:textSize="30dp"
-        android:id="@+id/gametext"
+        android:id="@+id/gametext1"
         android:layout_alignBottom="@+id/fishbtn5"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="rod"
+        android:textSize="30dp"
+        android:id="@+id/gametext2"
+        android:layout_above="@+id/rodbtn2"
+        android:layout_alignLeft="@+id/gametext1"
+        android:layout_alignStart="@+id/gametext1" />
 
     <com.gc.materialdesign.views.ButtonRectangle
         android:id="@+id/fishbtn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#1E88E5"
-        android:text="start"
+        android:text=" ? "
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -33,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#1E88E5"
-        android:text="start"
+        android:text=" ? "
         android:layout_alignTop="@+id/fishbtn3"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -43,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#1E88E5"
-        android:text="start"
+        android:text=" ? "
         android:layout_marginTop="82dp"
         android:layout_below="@+id/fishbtn5"
         android:layout_alignParentRight="true"
@@ -54,8 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#1E88E5"
-        android:text="start"
-
+        android:text=" ? "
         android:layout_above="@+id/fishbtn2"
         android:layout_centerHorizontal="true" />
 
@@ -64,9 +73,39 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#1E88E5"
-        android:text="start"
-
+        android:text=" ? "
         android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/fishbtn3"
+        android:layout_alignStart="@+id/fishbtn3" />
+
+    <com.gc.materialdesign.views.ButtonRectangle
+        android:id="@+id/rodbtn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#1E88E5"
+        android:text=" ? "
+        android:layout_below="@+id/fishbtn2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="82dp" />
+
+    <com.gc.materialdesign.views.ButtonRectangle
+        android:id="@+id/rodbtn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#1E88E5"
+        android:text=" ? "
+        android:layout_alignTop="@+id/rodbtn1"
+        android:layout_alignLeft="@+id/fishbtn4"
+        android:layout_alignStart="@+id/fishbtn4" />
+
+    <com.gc.materialdesign.views.ButtonRectangle
+        android:id="@+id/rodbtn3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#1E88E5"
+        android:text=" ? "
+        android:layout_alignTop="@+id/rodbtn2"
         android:layout_alignLeft="@+id/fishbtn3"
         android:layout_alignStart="@+id/fishbtn3" />
 
