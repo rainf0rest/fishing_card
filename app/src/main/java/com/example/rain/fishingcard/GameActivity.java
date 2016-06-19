@@ -13,7 +13,7 @@ public class GameActivity extends Activity{
 
     TextView fish1, fish2, fish3, fish4, fish5, fish6, fish7, fish8,
             rod1, rod2, rod3, rod4, scoreText, cardLaveText, comboText;
-    int combo = 0, score = 0;
+    int combo = 0, score = 0, oldLave = 0;
     Poker gamePoker = new Poker();
 
     @Override
@@ -121,7 +121,7 @@ public class GameActivity extends Activity{
         rod4.setText("" + getAPoint());
         scoreText.setText("score:" + score);
         cardLaveText.setText("" + gamePoker.getLave());
-        comboText.setText("" + combo);
+        comboText.setText("");
 
 
         /*rod1.setText("" + getAPoint());
@@ -134,7 +134,8 @@ public class GameActivity extends Activity{
         int point = card.getPoint();
         String s = "A";
         if(point >= 1 && point <= 9) {
-            s =  "" + point++;
+            point ++;
+            s =  "" + point;
         }
         else {
             switch (point) {
@@ -210,9 +211,11 @@ public class GameActivity extends Activity{
 
 
         if(shoupai == pupai && shoupai != 0) {
-            check();
+            oldLave = gamePoker.getLave();
+            check();//view
+            reflesh();//score and combo
         }
-        comboText.setText("" + shouchoose);
+        //comboText.setText("" + shouchoose);
 
     }
 
@@ -261,10 +264,7 @@ public class GameActivity extends Activity{
 
         checkFishColor();
         checkRodColor();
-        scoreText.setText("score:" + score);
-        cardLaveText.setText("" + gamePoker.getLave());
-        //comboText.setText("" + shouchoose);
-        comboText.setText("check");
+
     }
 
     void checkRodColor() {
@@ -323,6 +323,16 @@ public class GameActivity extends Activity{
             fish5.setBackgroundResource(R.color.blue);
         else
             fish5.setBackgroundColor(new Color().alpha(0));
+    }
+
+    void reflesh() {
+        int t = oldLave - gamePoker.getLave();
+        combo++;
+        score += t * 10 * combo;
+        scoreText.setText("score:" + score);
+        cardLaveText.setText("" + gamePoker.getLave());
+        comboText.setText("X" + combo);
+        //comboText.setText("check");
     }
 
 }
