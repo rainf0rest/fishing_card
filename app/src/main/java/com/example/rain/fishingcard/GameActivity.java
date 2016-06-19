@@ -1,6 +1,7 @@
 package com.example.rain.fishingcard;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -183,12 +184,30 @@ public class GameActivity extends Activity{
 
     void work(int type, int pp) {
         if(type < 0){
-            shoupai = pp;
-            shouchoose = type;
-        }else {
-            pupai = pupai + pp;
-            pupaich[type] = 1;
+            if(shouchoose == type){
+                //cancel();
+                shoupai = 0;
+                shouchoose = 0;
+            }
+            else{
+                shoupai = pp;
+                shouchoose = type;
+            }
+            checkRodColor();
         }
+        else {
+            if(pupaich[type] != 1) {
+                pupai = pupai + pp;
+                pupaich[type] = 1;
+            }
+            else {
+                pupai = pupai - pp;
+                pupaich[type] = 0;
+            }
+
+            checkFishColor();
+        }
+
 
         if(shoupai == pupai && shoupai != 0) {
             check();
@@ -240,9 +259,70 @@ public class GameActivity extends Activity{
             pupaich[i] = 0;
         }
 
+        checkFishColor();
+        checkRodColor();
         scoreText.setText("score:" + score);
         cardLaveText.setText("" + gamePoker.getLave());
         //comboText.setText("" + shouchoose);
         comboText.setText("check");
     }
+
+    void checkRodColor() {
+        switch(shouchoose){
+            case -1:
+                rod1.setBackgroundResource(R.color.blue);
+                rod2.setBackgroundColor(new Color().alpha(0));
+                rod3.setBackgroundColor(new Color().alpha(0));
+                rod4.setBackgroundColor(new Color().alpha(0));
+                break;
+            case -2:
+                rod2.setBackgroundResource(R.color.blue);
+                rod1.setBackgroundColor(new Color().alpha(0));
+                rod3.setBackgroundColor(new Color().alpha(0));
+                rod4.setBackgroundColor(new Color().alpha(0));
+                break;
+            case -3:
+                rod3.setBackgroundResource(R.color.blue);
+                rod2.setBackgroundColor(new Color().alpha(0));
+                rod1.setBackgroundColor(new Color().alpha(0));
+                rod4.setBackgroundColor(new Color().alpha(0));
+                break;
+            case -4:
+                rod4.setBackgroundResource(R.color.blue);
+                rod2.setBackgroundColor(new Color().alpha(0));
+                rod3.setBackgroundColor(new Color().alpha(0));
+                rod1.setBackgroundColor(new Color().alpha(0));
+                break;
+            default:
+                rod4.setBackgroundColor(new Color().alpha(0));
+                rod2.setBackgroundColor(new Color().alpha(0));
+                rod3.setBackgroundColor(new Color().alpha(0));
+                rod1.setBackgroundColor(new Color().alpha(0));
+                break;
+        }
+    }
+
+    void checkFishColor() {
+        if(pupaich[1] == 1)
+            fish1.setBackgroundResource(R.color.blue);
+        else
+            fish1.setBackgroundColor(new Color().alpha(0));
+        if(pupaich[2] == 1)
+            fish2.setBackgroundResource(R.color.blue);
+        else
+            fish2.setBackgroundColor(new Color().alpha(0));
+        if(pupaich[3] == 1)
+            fish3.setBackgroundResource(R.color.blue);
+        else
+            fish3.setBackgroundColor(new Color().alpha(0));
+        if(pupaich[4] == 1)
+            fish4.setBackgroundResource(R.color.blue);
+        else
+            fish4.setBackgroundColor(new Color().alpha(0));
+        if(pupaich[5] == 1)
+            fish5.setBackgroundResource(R.color.blue);
+        else
+            fish5.setBackgroundColor(new Color().alpha(0));
+    }
+
 }
