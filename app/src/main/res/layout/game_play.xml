@@ -8,15 +8,21 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="235dp"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.45"
         android:weightSum="1">
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="230dp"
+            android:layout_gravity="center_horizontal"
+            android:weightSum="1">
+
         <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:rowCount="7"
             android:columnCount="9"
             android:id="@+id/grid"
@@ -24,7 +30,7 @@
 
             <TextView
                 android:layout_height="114dp"
-                android:layout_width="96dp"
+                android:layout_width="90dp"
                 android:text=" ? "
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -35,7 +41,7 @@
 
             <TextView
                 android:layout_height="114dp"
-                android:layout_width="96dp"
+                android:layout_width="90dp"
                 android:text=" ? "
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -46,7 +52,7 @@
 
             <TextView
                 android:layout_height="114dp"
-                android:layout_width="96dp"
+                android:layout_width="90dp"
                 android:text=" ? "
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -57,7 +63,7 @@
 
             <TextView
                 android:layout_height="114dp"
-                android:layout_width="96dp"
+                android:layout_width="90dp"
                 android:text=" ? "
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -68,7 +74,7 @@
 
             <TextView
                 android:layout_height="114dp"
-                android:layout_width="96dp"
+                android:layout_width="90dp"
                 android:text=" ? "
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -77,11 +83,165 @@
                 android:layout_row="2"
                 />
 
+            <TextView
+                android:layout_height="114dp"
+                android:layout_width="90dp"
+                android:text=" ? "
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:id="@+id/fish6"
+                android:layout_column="1"
+                android:layout_row="2"
+                />
 
+            <TextView
+                android:layout_height="114dp"
+                android:layout_width="90dp"
+                android:text=" ? "
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:id="@+id/fish7"
+                android:layout_column="2"
+                android:layout_row="2"
+                />
 
+            <TextView
+                android:layout_height="114dp"
+                android:layout_width="90dp"
+                android:text=" ? "
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:id="@+id/fish8"
+                android:layout_column="3"
+                android:layout_row="2"
+                />
             </GridLayout>
+            </LinearLayout>
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:layout_alignParentBottom="true"
+            android:background="#1E88E5"
+            android:layout_weight="0.06" />
 
         </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="85dp"
+        android:layout_gravity="center_horizontal"
+        android:weightSum="1">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_height="fill_parent"
+            android:layout_width="80dp"
+            android:text=" 0 "
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:id="@+id/cardLave"
+            />
+
+        <TextView
+            android:layout_height="fill_parent"
+            android:layout_width="200dp"
+            android:text=" 0 "
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:id="@+id/score"
+            />
+
+        <TextView
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:text=" 0 "
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:id="@+id/combo"
+            />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:layout_alignParentBottom="true"
+            android:background="#1E88E5"
+            android:layout_weight="0.06" />
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="130dp"
+        android:layout_gravity="center_horizontal"
+        android:weightSum="1">
+
+        <GridLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:rowCount="5"
+            android:columnCount="9"
+            android:id="@+id/grid2"
+            android:layout_weight="0.18">
+
+            <TextView
+                android:layout_height="fill_parent"
+                android:layout_width="90dp"
+                android:text=" ? "
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:id="@+id/rod1"
+                android:layout_column="0"
+                android:layout_row="1"
+                />
+
+            <TextView
+                android:layout_height="fill_parent"
+                android:layout_width="90dp"
+                android:text=" ? "
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:id="@+id/rod2"
+                android:layout_column="1"
+                android:layout_row="1"
+                />
+
+            <TextView
+                android:layout_height="fill_parent"
+                android:layout_width="90dp"
+                android:text=" ? "
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:id="@+id/rod3"
+                android:layout_column="2"
+                android:layout_row="1"
+                />
+
+            <TextView
+                android:layout_height="fill_parent"
+                android:layout_width="90dp"
+                android:text=" ? "
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:id="@+id/rod4"
+                android:layout_column="3"
+                android:layout_row="1"
+                />
+
+            </GridLayout>
+        </LinearLayout>
+
 
 
 </LinearLayout>
