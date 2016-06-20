@@ -14,7 +14,10 @@ public class GameActivity extends Activity{
     TextView fish1, fish2, fish3, fish4, fish5, fish6, fish7, fish8,
             rod1, rod2, rod3, rod4, scoreText, cardLaveText, comboText;
     int combo = 0, score = 0, oldLave = 0;
+    com.gc.materialdesign.views.ButtonFloatSmall addANewPoker;
     Poker gamePoker = new Poker();
+
+    boolean sixP = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,7 @@ public class GameActivity extends Activity{
         scoreText = (TextView) findViewById(R.id.score);
         cardLaveText = (TextView) findViewById(R.id.cardLave);
         comboText = (TextView) findViewById(R.id.combo);
+        addANewPoker = (com.gc.materialdesign.views.ButtonFloatSmall) findViewById(R.id.addANewPoker);
 
         fish1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +76,13 @@ public class GameActivity extends Activity{
             }
         });
 
+        fish6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                work(6, getNumber(fish6.getText().toString()));
+            }
+        });
+
         rod1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,6 +108,19 @@ public class GameActivity extends Activity{
             @Override
             public void onClick(View v) {
                 work(-4, getNumber(rod4.getText().toString()));
+            }
+        });
+
+        addANewPoker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(sixP == false) {
+                    sixP = true;
+                    fish6.setVisibility(View.VISIBLE);
+                    fish6.setText("" + getAPoint());
+                    refleshLave();
+                }
+                
             }
         });
 
@@ -181,7 +205,7 @@ public class GameActivity extends Activity{
     }
 
     int shoupai = 0, pupai = 0, shouchoose = 0, pu = 0;
-    int pupaich[] = {0,0,0,0,0,0,0};
+    int pupaich[] = {0,0,0,0,0,0,0,0};
 
     void work(int type, int pp) {
         if(type < 0){
@@ -234,7 +258,7 @@ public class GameActivity extends Activity{
                 rod4.setText("" + getAPoint());
                 break;
         }
-        for(int i = 1; i <= 5; i++) {
+        for(int i = 1; i < pupaich.length; i++) {
             if(pupaich[i] == 1) {
                 switch(i){
                     case 1:
@@ -252,6 +276,10 @@ public class GameActivity extends Activity{
                     case 5:
                         fish5.setText("" + getAPoint());
                         break;
+                    case 6:
+                        fish5.setText("" + getAPoint());
+                        break;
+
                 }
             }
         }
@@ -323,6 +351,11 @@ public class GameActivity extends Activity{
             fish5.setBackgroundResource(R.color.blue);
         else
             fish5.setBackgroundColor(new Color().alpha(0));
+        if(pupaich[6] == 1)
+            fish6.setBackgroundResource(R.color.blue);
+        else
+            fish6.setBackgroundColor(new Color().alpha(0));
+
     }
 
     void reflesh() {
@@ -335,4 +368,8 @@ public class GameActivity extends Activity{
         //comboText.setText("check");
     }
 
+    void refleshLave() {
+        oldLave--;
+        cardLaveText.setText("" + gamePoker.getLave());
+    }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:baselineAligned="false"
     android:orientation="vertical"
@@ -181,6 +182,13 @@
         </LinearLayout>
 
     <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="140dp"
+        android:layout_gravity="center_horizontal"
+        android:weightSum="1">
+
+    <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="130dp"
@@ -240,8 +248,28 @@
                 />
 
             </GridLayout>
+
         </LinearLayout>
 
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:layout_alignParentBottom="true"
+            android:background="#1E88E5"
+            android:id="@+id/viewcc"
+            android:layout_weight="0.06" />
+
+        </LinearLayout>
+
+
+
+    <com.gc.materialdesign.views.ButtonFloatSmall
+        android:id="@+id/addANewPoker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#1E88E5"
+        materialdesign:iconDrawable="@drawable/ic_action_new"
+        android:layout_gravity="center_horizontal"/>
 
 
 </LinearLayout>
