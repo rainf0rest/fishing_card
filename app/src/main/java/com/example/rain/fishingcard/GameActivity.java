@@ -120,7 +120,7 @@ public class GameActivity extends Activity{
                     fish6.setText("" + getAPoint());
                     refleshLave();
                 }
-                
+
             }
         });
 
@@ -277,7 +277,7 @@ public class GameActivity extends Activity{
                         fish5.setText("" + getAPoint());
                         break;
                     case 6:
-                        fish5.setText("" + getAPoint());
+                        fish6.setText("" + getAPoint());
                         break;
 
                 }
