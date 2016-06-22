@@ -143,8 +143,8 @@ public class GameActivity extends Activity{
         rod2.setText("" + getAPoint());
         rod3.setText("" + getAPoint());
         rod4.setText("" + getAPoint());
-        scoreText.setText("score:" + score);
-        cardLaveText.setText("" + gamePoker.getLave());
+        scoreText.setText("分数:" + score);
+        cardLaveText.setText("牌组:" + gamePoker.getLave());
         comboText.setText("");
 
 
@@ -362,9 +362,9 @@ public class GameActivity extends Activity{
         int t = oldLave - gamePoker.getLave();
         combo++;
         score += t * 10 * combo;
-        scoreText.setText("score:" + score);
-        cardLaveText.setText("" + gamePoker.getLave());
-        comboText.setText("X" + combo);
+        scoreText.setText("分数:" + score);
+        cardLaveText.setText("牌组:" + gamePoker.getLave());
+        comboText.setText("" + combo + "连击");
         //comboText.setText("check");
     }
 
