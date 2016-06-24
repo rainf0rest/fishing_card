@@ -14,7 +14,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fishing Card!"
+        android:text="钓鱼卡牌游戏"
         android:layout_marginTop="59dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#1E88E5"
-        android:text="start"
+        android:text="开始"
         android:layout_marginTop="48dp"
         android:layout_below="@+id/startText"
         android:layout_alignLeft="@+id/startText"

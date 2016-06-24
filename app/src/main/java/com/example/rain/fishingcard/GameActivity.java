@@ -370,6 +370,6 @@ public class GameActivity extends Activity{
 
     void refleshLave() {
         oldLave--;
-        cardLaveText.setText("" + gamePoker.getLave());
+        cardLaveText.setText("牌组:" + gamePoker.getLave());
     }
 }
