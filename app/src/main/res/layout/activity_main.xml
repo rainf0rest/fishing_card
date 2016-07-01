@@ -32,12 +32,11 @@
         android:layout_alignStart="@+id/startText" />
 
     <com.gc.materialdesign.views.ButtonRectangle
-        android:id="@+id/settingbtn"
+        android:id="@+id/hScorebtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#1E88E5"
-        android:text="setting"
-        android:visibility="gone"
+        android:text="最高分"
         android:layout_below="@+id/startbtn"
         android:layout_alignLeft="@+id/startbtn"
         android:layout_alignStart="@+id/startbtn" />

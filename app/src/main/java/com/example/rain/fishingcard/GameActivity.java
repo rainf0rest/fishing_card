@@ -1,6 +1,7 @@
 package com.example.rain.fishingcard;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,11 @@ public class GameActivity extends Activity{
     int combo = 0, score = 0, oldLave = 0;
     com.gc.materialdesign.views.ButtonFloatSmall addANewPoker;
     Poker gamePoker = new Poker();
+
+    SharedPreferences sharedPreferences;
+    int highestScore;
+    SharedPreferences.Editor editor;
+
 
     boolean sixP = false;
 
@@ -40,6 +46,9 @@ public class GameActivity extends Activity{
         cardLaveText = (TextView) findViewById(R.id.cardLave);
         comboText = (TextView) findViewById(R.id.combo);
         addANewPoker = (com.gc.materialdesign.views.ButtonFloatSmall) findViewById(R.id.addANewPoker);
+
+        sharedPreferences = getSharedPreferences("finshCarddata", MODE_WORLD_READABLE);
+        highestScore = sharedPreferences.getInt("highestScore", 0);
 
         fish1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -362,6 +371,11 @@ public class GameActivity extends Activity{
         int t = oldLave - gamePoker.getLave();
         combo++;
         score += t * 10 * combo;
+        if(score > highestScore) {
+            editor = sharedPreferences.edit();
+            editor.putInt("highestScore", score);
+            editor.commit();
+        }
         scoreText.setText("分数:" + score);
         cardLaveText.setText("牌组:" + gamePoker.getLave());
         comboText.setText("" + combo + "连击");
