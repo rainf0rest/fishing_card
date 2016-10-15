@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    com.gc.materialdesign.views.ButtonRectangle startbtn, hScorebtn;
+    com.gc.materialdesign.views.ButtonRectangle startbtn, hScorebtn, gamblingbtn;
 
 
     SharedPreferences sharedPreferences;
@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         startbtn = (com.gc.materialdesign.views.ButtonRectangle) findViewById(R.id.startbtn);
         hScorebtn = (com.gc.materialdesign.views.ButtonRectangle) findViewById(R.id.hScorebtn);
+        gamblingbtn = (com.gc.materialdesign.views.ButtonRectangle) findViewById(R.id.gamblingTP);
 
 
         startbtn.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +50,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "最高分： " + highestScore, Toast.LENGTH_SHORT).show();
                 //startbtn.;
+            }
+        });
+
+        gamblingbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, GamblingTPActivity.class);
+                startActivity(intent);
             }
         });
 

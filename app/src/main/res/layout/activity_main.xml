@@ -41,6 +41,16 @@
         android:layout_alignLeft="@+id/startbtn"
         android:layout_alignStart="@+id/startbtn" />
 
+    <com.gc.materialdesign.views.ButtonRectangle
+        android:id="@+id/gamblingTP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#1E88E5"
+        android:text="赌博"
+        android:layout_below="@+id/hScorebtn"
+        android:layout_alignLeft="@+id/hScorebtn"
+        android:layout_alignStart="@+id/hScorebtn" />
+
 
 
 </RelativeLayout>
