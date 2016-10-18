@@ -157,4 +157,55 @@ public class GamblingTypeOne {
         }
         return s;
     }
+
+    public int getPlayer1APoint() {
+        return player1.getCard1().getPoint() + 1;
+    }
+
+    public int getPlayer1BPoint() {
+        return player1.getCard2().getPoint() + 1;
+    }
+
+    public int getPlayer1CPoint() {
+        return player1.getCard3().getPoint() + 1;
+    }
+
+    public int getPlayer1AColor() {
+        return player1.getCard1().getColor();
+    }
+
+    public int getPlayer1BColor() {
+        return player1.getCard2().getColor();
+    }
+
+    public int getPlayer1CColor() {
+        return player1.getCard3().getColor();
+    }
+
+    public int getPlayer2APoint() {
+        return player2.getCard1().getPoint() + 1;
+    }
+
+    public int getPlayer2BPoint() {
+        return player2.getCard2().getPoint() + 1;
+    }
+
+    public int getPlayer2CPoint() {
+        return player2.getCard3().getPoint() + 1;
+    }
+
+    public int getPlayer2AColor() {
+        return player2.getCard1().getColor();
+    }
+
+    public int getPlayer2BColor() {
+        return player2.getCard2().getColor();
+    }
+
+    public int getPlayer2CColor() {
+        return player2.getCard3().getColor();
+    }
+
+
+
 }
