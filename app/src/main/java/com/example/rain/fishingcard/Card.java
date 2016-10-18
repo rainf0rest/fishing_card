@@ -12,6 +12,11 @@ public class Card {
         point = 0;
     }
 
+    public Card(Card c) {
+        color = c.getColor();
+        point = c.getPoint();
+    }
+
     public int getColor() {
         return color;
     }

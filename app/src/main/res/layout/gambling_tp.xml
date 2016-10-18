@@ -3,6 +3,10 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/half_screen"
+    android:id="@+id/gamblingTest"
+    android:text="test"/>
 
 </LinearLayout>
