@@ -3,10 +3,170 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/half_screen"
-    android:id="@+id/gamblingTest"
-    android:text="test"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/player_large"
+        android:id="@+id/gmPlayerAI"
+        android:text="AI"
+        android:gravity="center"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/diver"
+        android:layout_alignParentBottom="true"
+        android:background="@color/separator_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/half_card"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/half_card"
+            android:layout_height="@dimen/half_card"
+            android:src="@drawable/meihua"
+            android:id="@+id/gaAICardAColor"/>
+        <ImageView
+            android:layout_width="@dimen/half_card"
+            android:layout_height="@dimen/half_card"
+            android:src="@drawable/meihua"
+            android:id="@+id/gaAICardBColor"/>
+        <ImageView
+            android:layout_width="@dimen/half_card"
+            android:layout_height="@dimen/half_card"
+            android:src="@drawable/meihua"
+            android:id="@+id/gaAICardCColor"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/half_card"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="@dimen/half_card"
+            android:layout_height="@dimen/half_card"
+            android:text="K"
+            android:id="@+id/gaAICardAPoint"
+            android:gravity="center"
+            android:textSize="@dimen/player_large"/>
+        <TextView
+            android:layout_width="@dimen/half_card"
+            android:layout_height="@dimen/half_card"
+            android:text="K"
+            android:id="@+id/gaAICardBPoint"
+            android:gravity="center"
+            android:textSize="@dimen/player_large"/>
+        <TextView
+            android:layout_width="@dimen/half_card"
+            android:layout_height="@dimen/half_card"
+            android:text="K"
+            android:id="@+id/gaAICardCPoint"
+            android:gravity="center"
+            android:textSize="@dimen/player_large"/>
+        </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/diver"
+        android:layout_alignParentBottom="true"
+        android:background="@color/separator_color" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/player_large"
+        android:text="ai:xxx/you:xxx"
+        android:gravity="center"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/diver"
+        android:layout_alignParentBottom="true"
+        android:background="@color/separator_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/half_card"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/half_card"
+            android:layout_height="@dimen/half_card"
+            android:src="@drawable/meihua"
+            android:id="@+id/gaPlayerCardAColor"/>
+        <ImageView
+            android:layout_width="@dimen/half_card"
+            android:layout_height="@dimen/half_card"
+            android:src="@drawable/meihua"
+            android:id="@+id/gaPlayerCardBColor"/>
+        <ImageView
+            android:layout_width="@dimen/half_card"
+            android:layout_height="@dimen/half_card"
+            android:src="@drawable/meihua"
+            android:id="@+id/gaPlayerCardCColor"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/half_card"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="@dimen/half_card"
+            android:layout_height="@dimen/half_card"
+            android:text="K"
+            android:id="@+id/gaPlayerCardAPoint"
+            android:gravity="center"
+            android:textSize="@dimen/player_large"/>
+        <TextView
+            android:layout_width="@dimen/half_card"
+            android:layout_height="@dimen/half_card"
+            android:text="K"
+            android:id="@+id/gaPlayerCardBPoint"
+            android:gravity="center"
+            android:textSize="@dimen/player_large"/>
+        <TextView
+            android:layout_width="@dimen/half_card"
+            android:layout_height="@dimen/half_card"
+            android:text="K"
+            android:id="@+id/gaPlayerCardCPoint"
+            android:gravity="center"
+            android:textSize="@dimen/player_large"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/diver"
+        android:layout_alignParentBottom="true"
+        android:background="@color/separator_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/half_card"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="@dimen/quarter_screen"
+            android:layout_height="@dimen/half_card"
+            android:text="money:xxx"
+            android:gravity="center"/>
+
+        <Button
+            android:layout_width="@dimen/card"
+            android:layout_height="@dimen/half_card"
+            android:text="加注"
+            android:gravity="center"/>
+
+        <Button
+            android:layout_width="@dimen/card"
+            android:layout_height="@dimen/half_card"
+            android:text="放弃"
+            android:gravity="center"/>
+
+        <Button
+            android:layout_width="@dimen/card"
+            android:layout_height="@dimen/half_card"
+            android:text="揭牌"
+            android:gravity="center"/>
+
+        </LinearLayout>
 
 </LinearLayout>

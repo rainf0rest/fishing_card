@@ -17,7 +17,7 @@ public class GamblingTPActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gambling_tp);
 
-        textView = (TextView) findViewById(R.id.gamblingTest);
+        /*textView = (TextView) findViewById(R.id.gamblingTest);
 
         GamblingTypeOne myGame = new GamblingTypeOne();
 
@@ -51,6 +51,7 @@ public class GamblingTPActivity extends Activity{
                 
             }
         }
+        */
 
 
     }
