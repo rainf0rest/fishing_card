@@ -17,6 +17,16 @@ public class GamblingTypeOne {
         player2 = new ThreeCard(poker.getACacd(), poker.getACacd(), poker.getACacd());
     }
 
+    public void reset() {
+        poker.init();
+        player1.setCard1(poker.getACacd());
+        player1.setCard2(poker.getACacd());
+        player1.setCard3(poker.getACacd());
+        player2.setCard1(poker.getACacd());
+        player2.setCard2(poker.getACacd());
+        player2.setCard3(poker.getACacd());
+    }
+
     public ThreeCard getPlayer1() {
         return player1;
     }
@@ -171,15 +181,15 @@ public class GamblingTypeOne {
     }
 
     public int getPlayer1AColor() {
-        return player1.getCard1().getColor();
+        return player1.getCard1().getColor() + 1;
     }
 
     public int getPlayer1BColor() {
-        return player1.getCard2().getColor();
+        return player1.getCard2().getColor() + 1;
     }
 
     public int getPlayer1CColor() {
-        return player1.getCard3().getColor();
+        return player1.getCard3().getColor() + 1;
     }
 
     public int getPlayer2APoint() {
@@ -195,15 +205,15 @@ public class GamblingTypeOne {
     }
 
     public int getPlayer2AColor() {
-        return player2.getCard1().getColor();
+        return player2.getCard1().getColor() + 1;
     }
 
     public int getPlayer2BColor() {
-        return player2.getCard2().getColor();
+        return player2.getCard2().getColor() + 1;
     }
 
     public int getPlayer2CColor() {
-        return player2.getCard3().getColor();
+        return player2.getCard3().getColor() + 1;
     }
 
 

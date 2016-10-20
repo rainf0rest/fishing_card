@@ -9,5 +9,6 @@
     <dimen name="half_card">80dp</dimen>
     <dimen name="player_large">30dp</dimen>
     <dimen name="diver">3dp</dimen>
+    <dimen name="gaBtn">60dp</dimen>
 
 </resources>
