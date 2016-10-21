@@ -1,11 +1,13 @@
 package com.example.rain.fishingcard;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by rain on 2016/10/15.
@@ -13,7 +15,8 @@ import android.widget.TextView;
 public class GamblingTPActivity extends Activity implements View.OnClickListener{
 
     private TextView AICardAPoint, AICardBPoint, AICardCPoint,
-            PlayerCardAPoint, PlayerCardBPoint, PlayerCardCPoint;
+            PlayerCardAPoint, PlayerCardBPoint, PlayerCardCPoint,
+            moneyOfPlayerTextView, moneyScaleTextView;
     private GamblingTypeOne mygame;
     private ImageView AICardAColor, AICardBColor, AICardCColor,
             PlayerCardAColor, PlayerCardBColor, PlayerCardCColor;
@@ -65,6 +68,10 @@ public class GamblingTPActivity extends Activity implements View.OnClickListener
 
     private Button addMoney, giveUp, watchCard, solo;
 
+    SharedPreferences sharedPreferences;
+    //static public int highestScore;
+    SharedPreferences.Editor editor;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +90,9 @@ public class GamblingTPActivity extends Activity implements View.OnClickListener
         PlayerCardBPoint = (TextView) findViewById(R.id.gaPlayerCardBPoint);
         PlayerCardCPoint = (TextView) findViewById(R.id.gaPlayerCardCPoint);
 
+        moneyOfPlayerTextView = (TextView) findViewById(R.id.moneyofplayerText);
+        moneyScaleTextView = (TextView) findViewById(R.id.moneyScale);
+
         addMoney = (Button) findViewById(R.id.gaBtnAddMoney);
         giveUp = (Button) findViewById(R.id.gaBtnGiveUp);
         watchCard = (Button) findViewById(R.id.gaBtnWatchCard);
@@ -92,6 +102,11 @@ public class GamblingTPActivity extends Activity implements View.OnClickListener
         giveUp.setOnClickListener(this);
         watchCard.setOnClickListener(this);
         solo.setOnClickListener(this);
+
+        sharedPreferences = getSharedPreferences("gaGameTYONEData", MODE_PRIVATE);
+        moneyOfPlayer = sharedPreferences.getInt("moneyofplayer", 500);
+        editor = sharedPreferences.edit();
+
 
         mygame = new GamblingTypeOne();
         init();
@@ -123,13 +138,39 @@ public class GamblingTPActivity extends Activity implements View.OnClickListener
         {
             //handle multiple view click events
             case R.id.gaBtnAddMoney:
+                if(moneyOfPlayer < 10) {
+                    Toast.makeText(GamblingTPActivity.this, "Money is not enough!", Toast.LENGTH_SHORT);
+                }
+                else {
+                    gaMoneyofPlayer = gaMoneyofPlayer + 10;
+                    gaMoneyofAI = gaMoneyofAI + 10;
+                    moneyOfPlayer = moneyOfPlayer - 10;
+                    //moneyOfPlayerTextView.setText("￥:" + moneyOfPlayer);
+                    refresh();
+                }
+
                 break;
             case R.id.gaBtnGiveUp:
+
                 break;
             case R.id.gaBtnWatchCard:
+                getPlayerCard();
                 break;
             case R.id.gaBtnSolo:
                 getAllCard();
+                if(mygame.compare() == 1) {
+                    Toast.makeText(GamblingTPActivity.this, "you lost!", Toast.LENGTH_LONG);
+                    moneyScaleTextView.setText("lost");
+                }
+                else {
+                    Toast.makeText(GamblingTPActivity.this, "you win!", Toast.LENGTH_LONG);
+                    moneyScaleTextView.setText("win");
+                    moneyOfPlayer = moneyOfPlayer + gaMoneyofAI + gaMoneyofPlayer;
+                    editor.putInt("moneyofplayer", moneyOfPlayer);
+                    editor.commit();
+                }
+                gaMoneyofPlayer = 0;
+                gaMoneyofAI = 0;
                 break;
         }
     }
@@ -150,6 +191,9 @@ public class GamblingTPActivity extends Activity implements View.OnClickListener
         PlayerCardBPoint.setText(points[0]);
         PlayerCardCPoint.setText(points[0]);
 
+        //moneyOfPlayerTextView.setText("￥:" + moneyOfPlayer);
+        refresh();
+
         gaMoneyofAI = 0;
         gaMoneyofPlayer = 0;
 
@@ -162,6 +206,15 @@ public class GamblingTPActivity extends Activity implements View.OnClickListener
         AICardAPoint.setText(points[mygame.getPlayer1APoint()]);
         AICardBPoint.setText(points[mygame.getPlayer1BPoint()]);
         AICardCPoint.setText(points[mygame.getPlayer1CPoint()]);
+    }
+
+    private void getPlayerCard() {
+        PlayerCardAColor.setImageResource(images[mygame.getPlayer2AColor()]);
+        PlayerCardBColor.setImageResource(images[mygame.getPlayer2BColor()]);
+        PlayerCardCColor.setImageResource(images[mygame.getPlayer2CColor()]);
+        PlayerCardAPoint.setText(points[mygame.getPlayer2APoint()]);
+        PlayerCardBPoint.setText(points[mygame.getPlayer2BPoint()]);
+        PlayerCardCPoint.setText(points[mygame.getPlayer2CPoint()]);
     }
 
     private void getAllCard() {
@@ -178,6 +231,11 @@ public class GamblingTPActivity extends Activity implements View.OnClickListener
         PlayerCardAPoint.setText(points[mygame.getPlayer2APoint()]);
         PlayerCardBPoint.setText(points[mygame.getPlayer2BPoint()]);
         PlayerCardCPoint.setText(points[mygame.getPlayer2CPoint()]);
+    }
+
+    private void refresh() {
+        moneyOfPlayerTextView.setText("￥:" + moneyOfPlayer);
+        moneyScaleTextView.setText("AI:￥" + gaMoneyofAI + "/You:￥" + gaMoneyofPlayer);
     }
 
 }
