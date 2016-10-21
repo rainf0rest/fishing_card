@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">FishingCard</string>
+    <string name="dia_game_win_title">you win!</string>
+    <string name="dia_game_lost_title">you lost!</string>
+    <string name="dia_game_win_content">your money: </string>
+    <string name="dia_game_lost_content">your money: </string>
+    <string name="dia_game_win_posbtn">again</string>
+    <string name="dia_game_win_negbtn">exit</string>
+    <string name="dia_game_lost_posbtn">again</string>
+    <string name="dia_game_lost_negbtn">exit</string>
 </resources>

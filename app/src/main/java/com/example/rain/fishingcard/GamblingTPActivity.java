@@ -1,6 +1,8 @@
 package com.example.rain.fishingcard;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +29,8 @@ public class GamblingTPActivity extends Activity implements View.OnClickListener
             R.drawable.meihua,
             R.drawable.fangkuai
     };
+
+    private AlertDialog.Builder builder;
 
     private String[] points = new String[] {
             "?",
@@ -151,7 +155,9 @@ public class GamblingTPActivity extends Activity implements View.OnClickListener
 
                 break;
             case R.id.gaBtnGiveUp:
-
+                editor.putInt("moneyofplayer", moneyOfPlayer);
+                editor.commit();
+                showLostDia();
                 break;
             case R.id.gaBtnWatchCard:
                 getPlayerCard();
@@ -159,18 +165,22 @@ public class GamblingTPActivity extends Activity implements View.OnClickListener
             case R.id.gaBtnSolo:
                 getAllCard();
                 if(mygame.compare() == 1) {
-                    Toast.makeText(GamblingTPActivity.this, "you lost!", Toast.LENGTH_LONG);
-                    moneyScaleTextView.setText("lost");
+                    //Toast.makeText(GamblingTPActivity.this, "you lost!", Toast.LENGTH_SHORT).show();
+                    //moneyScaleTextView.setText("lost");
+                    editor.putInt("moneyofplayer", moneyOfPlayer);
+                    editor.commit();
+                    showLostDia();
                 }
                 else {
-                    Toast.makeText(GamblingTPActivity.this, "you win!", Toast.LENGTH_LONG);
-                    moneyScaleTextView.setText("win");
+                    //Toast.makeText(GamblingTPActivity.this, "you win!", Toast.LENGTH_SHORT).show();
+                    //moneyScaleTextView.setText("win");
                     moneyOfPlayer = moneyOfPlayer + gaMoneyofAI + gaMoneyofPlayer;
                     editor.putInt("moneyofplayer", moneyOfPlayer);
                     editor.commit();
+                    showWinDia();
                 }
-                gaMoneyofPlayer = 0;
-                gaMoneyofAI = 0;
+                //gaMoneyofPlayer = 0;
+                //gaMoneyofAI = 0;
                 break;
         }
     }
@@ -236,6 +246,88 @@ public class GamblingTPActivity extends Activity implements View.OnClickListener
     private void refresh() {
         moneyOfPlayerTextView.setText("￥:" + moneyOfPlayer);
         moneyScaleTextView.setText("AI:￥" + gaMoneyofAI + "/You:￥" + gaMoneyofPlayer);
+    }
+
+    private  void showWinDia() {
+
+        builder = new AlertDialog.Builder(this);
+        builder.setIcon(R.drawable.win);
+        builder.setTitle(R.string.dia_game_win_title);
+        builder.setMessage("getMoney: " + (gaMoneyofPlayer + gaMoneyofAI));
+
+        builder.setPositiveButton(R.string.dia_game_win_posbtn, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //Toast.makeText(MainActivity.this,"pos",Toast.LENGTH_SHORT).show();
+                resetGame();
+            }
+        });
+
+        builder.setNegativeButton(R.string.dia_game_win_negbtn, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //Toast.makeText(MainActivity.this,"neg",Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
+
+        builder.setCancelable(true);
+        AlertDialog dialog=builder.create();
+        dialog.show();
+
+    }
+
+    private  void showLostDia() {
+
+        builder = new AlertDialog.Builder(this);
+        builder.setIcon(R.drawable.win);
+        builder.setTitle(R.string.dia_game_lost_title);
+        builder.setMessage("lost Money: " + gaMoneyofPlayer);
+
+        builder.setPositiveButton(R.string.dia_game_win_posbtn, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //Toast.makeText(MainActivity.this,"pos",Toast.LENGTH_SHORT).show();
+                resetGame();
+            }
+        });
+
+        builder.setNegativeButton(R.string.dia_game_win_negbtn, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //Toast.makeText(MainActivity.this,"neg",Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
+
+        builder.setCancelable(true);
+        AlertDialog dialog=builder.create();
+        dialog.show();
+
+    }
+
+    private void resetGame() {
+        mygame.reset();
+
+        AICardAColor.setImageResource(images[0]);
+        AICardBColor.setImageResource(images[0]);
+        AICardCColor.setImageResource(images[0]);
+        PlayerCardAColor.setImageResource(images[0]);
+        PlayerCardBColor.setImageResource(images[0]);
+        PlayerCardCColor.setImageResource(images[0]);
+
+        AICardAPoint.setText(points[0]);
+        AICardBPoint.setText(points[0]);
+        AICardCPoint.setText(points[0]);
+        PlayerCardAPoint.setText(points[0]);
+        PlayerCardBPoint.setText(points[0]);
+        PlayerCardCPoint.setText(points[0]);
+
+        //moneyOfPlayerTextView.setText("￥:" + moneyOfPlayer);
+        refresh();
+
+        gaMoneyofAI = 0;
+        gaMoneyofPlayer = 0;
     }
 
 }
