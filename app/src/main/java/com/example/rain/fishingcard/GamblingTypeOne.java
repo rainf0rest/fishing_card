@@ -154,6 +154,35 @@ public class GamblingTypeOne {
         return level;
     }
 
+    public String getWhat(ThreeCard xcard) {
+        xcard.sort();
+        String string = "";
+        switch (getLevel(xcard)) {
+            case 1:
+                string = "杂牌";
+                break;
+            case 2:
+                string = "对子";
+                break;
+            case 3:
+                string = "同花";
+                break;
+            case 4:
+                string = "顺子";
+                break;
+            case 5:
+                string = "同花顺";
+                break;
+            case 6:
+                string = "豹子";
+                break;
+            default:
+                //string = "";
+                break;
+        }
+        return string;
+    }
+
     String getCardColor(int n) {
         String s = new String();
         switch(n) {

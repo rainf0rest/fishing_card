@@ -156,6 +156,8 @@ public class GamblingTPActivity extends Activity implements View.OnClickListener
             case R.id.gaBtnSolo:
                 mygame.sortCard();
                 getAllCard();
+                Toast.makeText(GamblingTPActivity.this,"AI: " + mygame.getWhat(mygame.getPlayer1()) + "\nyou:"
+                        + mygame.getWhat(mygame.getPlayer2()),Toast.LENGTH_SHORT).show();
                 if(mygame.compare() == 1) {
                     //Toast.makeText(GamblingTPActivity.this, "you lost!", Toast.LENGTH_SHORT).show();
                     //moneyScaleTextView.setText("lost");
@@ -326,6 +328,7 @@ public class GamblingTPActivity extends Activity implements View.OnClickListener
 
 
     }
+
 
     private void showSimpleListDialog() {
         builder=new AlertDialog.Builder(this);
