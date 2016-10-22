@@ -22,11 +22,11 @@ public class GamblingTypeOne {
         player1.setCard1(poker.getACacd());
         player1.setCard2(poker.getACacd());
         player1.setCard3(poker.getACacd());
-        player1.reflush();
+        //player1.reflush();
         player2.setCard1(poker.getACacd());
         player2.setCard2(poker.getACacd());
         player2.setCard3(poker.getACacd());
-        player2.reflush();
+        //player2.reflush();
     }
 
     public ThreeCard getPlayer1() {
