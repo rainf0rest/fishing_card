@@ -59,4 +59,10 @@ public class ThreeCard {
     public void setCard3(Card card3) {
         this.card3 = card3;
     }
+
+    public void reflush() {
+        cardList[0] = card1;
+        cardList[1] = card2;
+        cardList[2] = card3;
+    }
 }

@@ -8,4 +8,5 @@
     <string name="dia_game_win_negbtn">exit</string>
     <string name="dia_game_lost_posbtn">again</string>
     <string name="dia_game_lost_negbtn">exit</string>
+    <string name="simple_list_dialog">how much?</string>
 </resources>

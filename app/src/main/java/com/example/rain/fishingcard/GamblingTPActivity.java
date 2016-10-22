@@ -142,17 +142,7 @@ public class GamblingTPActivity extends Activity implements View.OnClickListener
         {
             //handle multiple view click events
             case R.id.gaBtnAddMoney:
-                if(moneyOfPlayer < 10) {
-                    Toast.makeText(GamblingTPActivity.this, "Money is not enough!", Toast.LENGTH_SHORT);
-                }
-                else {
-                    gaMoneyofPlayer = gaMoneyofPlayer + 10;
-                    gaMoneyofAI = gaMoneyofAI + 10;
-                    moneyOfPlayer = moneyOfPlayer - 10;
-                    //moneyOfPlayerTextView.setText("￥:" + moneyOfPlayer);
-                    refresh();
-                }
-
+                showSimpleListDialog();
                 break;
             case R.id.gaBtnGiveUp:
                 editor.putInt("moneyofplayer", moneyOfPlayer);
@@ -160,9 +150,11 @@ public class GamblingTPActivity extends Activity implements View.OnClickListener
                 showLostDia();
                 break;
             case R.id.gaBtnWatchCard:
+                mygame.sortCard();
                 getPlayerCard();
                 break;
             case R.id.gaBtnSolo:
+                mygame.sortCard();
                 getAllCard();
                 if(mygame.compare() == 1) {
                     //Toast.makeText(GamblingTPActivity.this, "you lost!", Toast.LENGTH_SHORT).show();
@@ -200,13 +192,11 @@ public class GamblingTPActivity extends Activity implements View.OnClickListener
         PlayerCardAPoint.setText(points[0]);
         PlayerCardBPoint.setText(points[0]);
         PlayerCardCPoint.setText(points[0]);
-
-        //moneyOfPlayerTextView.setText("￥:" + moneyOfPlayer);
-        refresh();
-
         gaMoneyofAI = 0;
         gaMoneyofPlayer = 0;
-
+        addMoney(10);
+        //moneyOfPlayerTextView.setText("￥:" + moneyOfPlayer);
+        refresh();
     }
 
     private void getAICard() {
@@ -280,7 +270,7 @@ public class GamblingTPActivity extends Activity implements View.OnClickListener
     private  void showLostDia() {
 
         builder = new AlertDialog.Builder(this);
-        builder.setIcon(R.drawable.win);
+        builder.setIcon(R.drawable.lost);
         builder.setTitle(R.string.dia_game_lost_title);
         builder.setMessage("lost Money: " + gaMoneyofPlayer);
 
@@ -305,6 +295,11 @@ public class GamblingTPActivity extends Activity implements View.OnClickListener
         dialog.show();
 
     }
+    private void addMoney(int n) {
+        gaMoneyofPlayer += n;
+        gaMoneyofAI += n;
+        moneyOfPlayer -= n;
+    }
 
     private void resetGame() {
         mygame.reset();
@@ -323,11 +318,48 @@ public class GamblingTPActivity extends Activity implements View.OnClickListener
         PlayerCardBPoint.setText(points[0]);
         PlayerCardCPoint.setText(points[0]);
 
+        gaMoneyofAI = 0;
+        gaMoneyofPlayer = 0;
+        addMoney(10);
         //moneyOfPlayerTextView.setText("￥:" + moneyOfPlayer);
         refresh();
 
-        gaMoneyofAI = 0;
-        gaMoneyofPlayer = 0;
+
+    }
+
+    private void showSimpleListDialog() {
+        builder=new AlertDialog.Builder(this);
+        builder.setIcon(R.drawable.coin);
+        builder.setTitle(R.string.simple_list_dialog);
+
+        /**
+         * 设置内容区域为简单列表项
+         */
+        final String[] Items={"￥10","￥20","￥50"};
+        builder.setItems(Items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                int h = 0;
+                switch (i) {
+                    case 0:
+                        h = 10;
+                        break;
+                    case 1:
+                        h = 20;
+                        break;
+                    case 2:
+                        h = 50;
+                        break;
+                }
+                moneyOfPlayer -= h;
+                gaMoneyofAI += h;
+                gaMoneyofPlayer += h;
+                refresh();
+            }
+        });
+        builder.setCancelable(true);
+        AlertDialog dialog=builder.create();
+        dialog.show();
     }
 
 }
